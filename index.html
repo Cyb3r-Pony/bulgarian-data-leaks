@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG Data Leaks Database</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="lang-switch">
+        <button class="btn" onclick="toggleLanguage()">
+            <span id="langBtn">БГ</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 id="mainTitle">BULGARIAN DATA LEAKS</h1>
+            <div class="description" id="description">Tracking security breaches exposing personally identifiable information of Bulgarian citizens and confidential internal documents of organizations</div>
+            <div class="powered-by" id="poweredBy">Powered by Claude Sonnet 4.5 by Anthropic</div>
+        </header>
+
+        <div class="stats-counters">
+            <div class="counter-box">
+                <div class="counter-label" id="totalLabel">Total Leaks</div>
+                <div class="counter-number" id="totalCounter">0</div>
+            </div>
+            <div class="counter-box private">
+                <div class="counter-label" id="privateLabel">Private Sector</div>
+                <div class="counter-number" id="privateCounter">0</div>
+            </div>
+            <div class="counter-box public">
+                <div class="counter-label" id="publicLabel">Public Sector</div>
+                <div class="counter-number" id="publicCounter">0</div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2 class="stats-title" id="statsTitle">Data Leaks by Economic Sector</h2>
+            <div class="chart-container">
+                <canvas id="sectorChart"></canvas>
+            </div>
+            <div class="chart-legend" id="chartLegend"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn active" onclick="filterLeaks('all')">
+                <span id="btnAll">All Leaks</span>
+            </button>
+            <button class="btn" onclick="filterLeaks('public')">
+                <span id="btnPublic">Public Sector</span>
+            </button>
+            <button class="btn" onclick="filterLeaks('private')">
+                <span id="btnPrivate">Private Sector</span>
+            </button>
+            <button class="btn" onclick="filterLeaks('latest')">
+                <span id="btnLatest">Latest 10</span>
+            </button>
+        </div>
+
+        <div class="search-section">
+            <h3 class="search-title" id="searchTitle">Search for Company</h3>
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput" 
+                    placeholder="Enter company name or domain..."
+                    oninput="handleSearch()"
+                >
+            </div>
+            <div class="search-results-count" id="searchResults"></div>
+        </div>
+
+        <div class="leak-grid" id="leaksContainer"></div>
+
+        <div class="disclaimer">
+            <div class="disclaimer-title" id="disclaimerTitle">Legal Disclaimer</div>
+            <div class="disclaimer-text" id="disclaimerText">
+                This website does not engage in the acquisition, exfiltration, downloading, possession, hosting, access, consultation, redistribution, or disclosure of unlawfully obtained data. This platform indexes only publicly visible information posted by ransomware operators and open web sources without accessing or obtaining the underlying stolen content. The service is provided to support public awareness, legitimate research, and cyber-resilience. No stolen personal or confidential data is collected or distributed via this site.
+            </div>
+            <div class="inspired-by">
+                Inspired by <a href="https://bg-leaks.xyz/" target="_blank" rel="noopener noreferrer">https://bg-leaks.xyz/</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Evidence Lightbox Overlay -->
+    <div class="evidence-lightbox-overlay" id="evidenceLightbox">
+        <div class="evidence-lightbox-content">
+            <button class="evidence-lightbox-close" onclick="closeEvidenceOverlay()" aria-label="Close">×</button>
+            <img class="evidence-lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
