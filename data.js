@@ -154,7 +154,7 @@ const leaks = [
         evidenceImages: ["images/ilife.png"]
     },
     {
-        name: "ELD.bg",
+        name: "ELD.bg - 578GB",
         domain: "",
         sector: "private",
         economicSector: "Industrial & Supply Chain",
