@@ -61,5 +61,5 @@ Built for learning, awareness, and professional portfolio demonstration.
 
 ---
 
-## The project is inspired by: https://bg-leaks.xyz/
+**The project is inspired by: https://bg-leaks.xyz/**
 
