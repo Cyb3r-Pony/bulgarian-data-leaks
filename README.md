@@ -13,6 +13,8 @@ The goal is NOT to distribute, trade, store, or expose personally identifiable i
 
 This platform is for **educational, research, and defensive cybersecurity purposes only**.
 
+**You can find the website here: https://cyb3r-pony.github.io/bulgarian-data-leaks/**
+
 ---
 
 ## Project Functionality
