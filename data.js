@@ -852,5 +852,405 @@ const leaks = [
         date: "2023-07-21",
         sourceUrl: "https://breachforums.is",
         evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "5KM Run Bulgaria",
+        domain: "5kmrun.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Arena BG",
+        domain: "arenabg.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Avto Magazin Bulgaria",
+        domain: "avtomagazin.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "BG Ben UK Newspaper",
+        domain: "bgben.co.uk",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Bis.bg Social Network",
+        domain: "bis.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Box Office Bulgaria",
+        domain: "boxoffice.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Cabinet.bg Virtual Math",
+        domain: "cabinet.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Classroom Bulgaria",
+        domain: "classroom.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "UNWE Careers Portal",
+        domain: "careers.unwe.bg",
+        sector: "public",
+        economicSector: "Public sector",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Daxy Financial Services",
+        domain: "daxy.com",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Detelina Bulgaria",
+        domain: "detelina-bg.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "UARD E-learning Platform",
+        domain: "e-uard.bg",
+        sector: "public",
+        economicSector: "Public sector",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Journey.bg Travel Forum",
+        domain: "journey.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Investor.bg Forum",
+        domain: "forum.investor.bg",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "FP League Bulgaria",
+        domain: "fpleague.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "GSS Healthcare Software",
+        domain: "gss.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Jelezaria Hardware Store",
+        domain: "jelezaria.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "LS BG Maritime Training",
+        domain: "lsbg.net",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Market.bg Marketplace",
+        domain: "market.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Metal Best Bulgaria",
+        domain: "metal.best.bg",
+        sector: "private",
+        economicSector: "Industrial & Supply Chain",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Mining.bg Crypto Equipment",
+        domain: "mining.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Na Edro Bulgaria B2B",
+        domain: "naedro.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "National Focal Point on Drugs",
+        domain: "nfp-drugs.bg",
+        sector: "public",
+        economicSector: "Public sector",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Offnews.bg News Portal",
+        domain: "offnews.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "PC Mania Bulgaria",
+        domain: "pcmania.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Portal BG Directory",
+        domain: "portal-bg.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Rechnik BG Dictionary",
+        domain: "rechnik-bg.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Karta Shop Bulgaria",
+        domain: "shop.karta.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Snimki Online Photo Printing",
+        domain: "snimkionline.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Svatba BG Wedding Planning",
+        domain: "svatba-bg.net",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Theatre Art Bulgaria",
+        domain: "theatre.art.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "VIP Oferta Travel",
+        domain: "vipoferta.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "VSU Civil Engineering University",
+        domain: "vsu.bg",
+        sector: "public",
+        economicSector: "Public sector",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Pigeon Bulgaria Community",
+        domain: "pigeon-bg.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Vestnik Reklama Bulgaria",
+        domain: "vestnikreklama.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Bulgaria Shop Germany",
+        domain: "bulgaria-shop.de",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Journey Bulgaria Travel Portal",
+        domain: "en.journey.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "ADV Bulgaria Forum (Archived)",
+        domain: "forumold.adv-bulgaria.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Inox Bulgaria Steel Manufacturer",
+        domain: "inoxbulgaria.com",
+        sector: "private",
+        economicSector: "Industrial & Supply Chain",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "Mushroom Bulgaria Supplier",
+        domain: "mushroom-bulgaria.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "GOD user [Forum member]",
+        date: "2024-02-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/380_bg_dbs.png"]
     }
 ];
