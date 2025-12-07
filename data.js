@@ -592,5 +592,265 @@ const leaks = [
         date: "2021-12-16",
         sourceUrl: "https://www.breachsense.com/breaches/audio-guide-bg/",
         evidenceImages: []
+    },
+    {
+        name: "AutoCatalog.bg",
+        domain: "autocatalog.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Bulgarian Association of Supplementary Pension Security Companies",
+        domain: "assoc.pension.bg",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Rabota.bg",
+        domain: "rabota.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Technical University Sofia e-learning",
+        domain: "e-sopko.tu-sofia.bg",
+        sector: "public",
+        economicSector: "Public sector",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "BG-Planet.com",
+        domain: "bg-planet.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "EBC Brakes Bulgaria",
+        domain: "ebcbrakes.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Blog.bg",
+        domain: "blog.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Fagor Bulgaria",
+        domain: "fagor.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Patient.bg",
+        domain: "patient.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "ESI Store",
+        domain: "esistore.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Sea Jobs Bulgaria",
+        domain: "seajobs.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "DNT Bulgaria",
+        domain: "dnt.bg",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Linkstar Bulgaria",
+        domain: "linkstar.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Ski.bg",
+        domain: "ski.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "SuperPhone Bulgaria",
+        domain: "superphone.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "SMC-BG.com",
+        domain: "smc-bg.com",
+        sector: "private",
+        economicSector: "Other",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "IP Mart Bulgaria",
+        domain: "ipmart-bg.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "BG Pochivka",
+        domain: "bgpochivka.eu",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Portokal Games",
+        domain: "games.portokal-bg.net",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Iron Maiden Bulgaria Fan Club",
+        domain: "ironmaiden-bg.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Meloman Bulgaria",
+        domain: "meloman-bg.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Trimonium HR Recruitment",
+        domain: "trimonium-bg.com",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Bulgarian Property UK",
+        domain: "bulgarianpropertyuk.com",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Walkers Bulgaria Foundation",
+        domain: "walkersbg.org",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "BG Sail Enthusiasts",
+        domain: "bg-sail.org",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
+    },
+    {
+        name: "Kniga BG Online Bookstore",
+        domain: "knigabg.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Lucifer",
+        date: "2023-07-21",
+        sourceUrl: "https://breachforums.is",
+        evidenceImages: ["images/Lucifer_big_dbs.png"]
     }
 ];
