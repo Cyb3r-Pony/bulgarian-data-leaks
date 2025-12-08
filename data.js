@@ -944,14 +944,14 @@ const leaks = [
         evidenceImages: ["images/380_bg_dbs.png"]
     },
     {
-        name: "Daxy Financial Services",
+        name: "Daxy Financial Services [235,000 records]",
         domain: "daxy.com",
         sector: "private",
         economicSector: "Financial",
         threatActor: "GOD user [Forum member]",
-        date: "2024-02-21",
-        sourceUrl: "https://breachforums.is",
-        evidenceImages: ["images/380_bg_dbs.png"]
+        date: "2021-04",
+        sourceUrl: "https://data-wells.niamonx.io/Breach/Daxy.com",
+        evidenceImages: ["images/daxy.png"]
     },
     {
         name: "Detelina Bulgaria",
@@ -1164,14 +1164,14 @@ const leaks = [
         evidenceImages: ["images/380_bg_dbs.png"]
     },
     {
-        name: "VIP Oferta Travel",
+        name: "VIP Oferta Travel [350,000 accounts]",
         domain: "vipoferta.bg",
         sector: "private",
         economicSector: "Digital Commerce",
         threatActor: "GOD user [Forum member]",
-        date: "2024-02-21",
-        sourceUrl: "https://breachforums.is",
-        evidenceImages: ["images/380_bg_dbs.png"]
+        date: "2021-04",
+        sourceUrl: "https://data-wells.niamonx.io/Breach/VipOferta.bg",
+        evidenceImages: ["images/vipoferta.png"]
     },
     {
         name: "VSU Civil Engineering University",
@@ -1252,5 +1252,115 @@ const leaks = [
         date: "2024-02-21",
         sourceUrl: "https://breachforums.is",
         evidenceImages: ["images/380_bg_dbs.png"]
+    },
+    {
+        name: "offroad-bulgaria.com",
+        domain: "offroad-bulgaria.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Unidentified",
+        date: "2019-10-28",
+        sourceUrl: "https://www.ransomlook.io/leaks",
+        evidenceImages: ["images/offroad-bulgaria.png"]
+    },
+    {
+        name: "Shtora.Bg [32,000 records]",
+        domain: "shtora.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unidentified",
+        date: "2024-05-23",
+        sourceUrl: "https://www.ransomlook.io/leaks",
+        evidenceImages: ["images/shtora.png"]
+    },
+    {
+        name: "Sladur.bg [190,000 records]",
+        domain: "sladur.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Unidentified",
+        date: "2021-01-13",
+        sourceUrl: "https://www.techsolvency.com/passwords/hashes-org/leaks.txt",
+        evidenceImages: ["images/sladur.png"]
+    },
+    {
+        name: "Estore.sbs.bg [9,000 records]",
+        domain: "estore.sbs.bg",
+        sector: "private",
+        economicSector: "Industrial",
+        threatActor: "Unidentified",
+        date: "2020-10-25",
+        sourceUrl: "https://www.techsolvency.com/passwords/",
+        evidenceImages: ["images/estore.sbs.png"]
+    },
+    {
+        name: "Freelance.bg",
+        domain: "freelance.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Unidentified",
+        date: "2021-01-13",
+        sourceUrl: "https://www.techsolvency.com/passwords/",
+        evidenceImages: ["images/freelance.png"]
+    },
+    {
+        name: "Dell-bg.net [9,000 records]",
+        domain: "dell-bg.net",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unidentified",
+        date: "2021-01-13",
+        sourceUrl: "https://www.techsolvency.com/passwords/",
+        evidenceImages: ["images/dell-bg.png"]
+    },
+    {
+        name: "Forcom-bg.com [2,000 records]",
+        domain: "forcom-bg.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unidentified",
+        date: "2020-10-10",
+        sourceUrl: "https://www.techsolvency.com/passwords/",
+        evidenceImages: ["images/forcom-bg.png"]
+    },
+    {
+        name: "DentStore.bg [15,000 accounts]",
+        domain: "dentstore.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unidentified",
+        date: "Unknown",
+        sourceUrl: "https://data-wells.niamonx.io/Breach/DentStore.bg",
+        evidenceImages: ["images/dentstore.png"]
+    },
+    {
+        name: "Bania.bg [3,000 accounts]",
+        domain: "bania.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unidentified",
+        date: "Unknown",
+        sourceUrl: "https://data-wells.niamonx.io/Breach/Bania.bg",
+        evidenceImages: ["images/bania.png"]
+    },
+    {
+        name: "E-learning.econt-bg.com",
+        domain: "e-learning.econt-bg.com",
+        sector: "private",
+        economicSector: "Supply Chain",
+        threatActor: "Unidentified",
+        date: "Unknown",
+        sourceUrl: "https://data-wells.niamonx.io/Breach/E-learning.econt-bg.com",
+        evidenceImages: ["images/e-learning.econt-bg.png"]
+    },
+    {
+        name: "VarnaBroker.com",
+        domain: "varnabroker.com",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "Chucky [Forum member]",
+        date: "2021-12-19",
+        sourceUrl: "https://leakbase.la/threads/varnabroker-com.877/",
+        evidenceImages: ["images/varnabroker.png"]
     }
 ];
