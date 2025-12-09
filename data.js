@@ -1341,7 +1341,7 @@ const leaks = [
         threatActor: "Unidentified",
         date: "Unknown",
         sourceUrl: "https://data-wells.niamonx.io/Breach/Bania.bg",
-        evidenceImages: ["images/bania.png"]
+        evidenceImages: ["images/bania.png", "images/bania.bg.2.png"]
     },
     {
         name: "E-learning.econt-bg.com",
@@ -1362,5 +1362,125 @@ const leaks = [
         date: "2021-12-19",
         sourceUrl: "https://leakbase.la/threads/varnabroker-com.877/",
         evidenceImages: ["images/varnabroker.png"]
+    },
+    {
+        name: "bamf.bg",
+        domain: "bamf.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Z10N Predator [Forum member]",
+        date: "2025-08-01",
+        sourceUrl: "https://breachforums.st",
+        evidenceImages: ["images/bamf.bg.png"]
+    },
+    {
+        name: "corporate.offex.bg",
+        domain: "corporate.offex.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Fancy Bears [APT 28]",
+        date: "2025-03-25",
+        sourceUrl: "https://breachforums.st",
+        evidenceImages: ["images/corporate.offex.bg.png"]
+    },
+    {
+        name: "Forum.BG [75,000 rows]",
+        domain: "Forum.BG",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "NULLLLLL [Forum member]",
+        date: "2025-03-21",
+        sourceUrl: "http://breachforums.hn",
+        evidenceImages: ["images/forum.bg.png"]
+    },
+    {
+        name: "notino.bg [116,000 records]",
+        domain: "notino.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "fuckoverflow [Forum member]",
+        date: "2025-08-02",
+        sourceUrl: "https://darkforums.st",
+        evidenceImages: ["images/notino.bg.jpg"]
+    },
+    {
+        name: "pangratz.bg",
+        domain: "pangratz.bg",
+        sector: "private",
+        economicSector: "Industrial",
+        threatActor: "Michaell [Forum member]",
+        date: "2025-08-07",
+        sourceUrl: "https://darkforums.st",
+        evidenceImages: ["images/pangratz.bg.png"]
+    },
+    {
+        name: "superdoc.bg [1,200 accounts]",
+        domain: "superdoc.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "fuckoverflow [Forum member]",
+        date: "2025-08-01",
+        sourceUrl: "https://darkforums.st",
+        evidenceImages: ["images/superdoc.bg.png"]
+    },
+    {
+        name: "yavor.bg",
+        domain: "yavor.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "NarodArmiya [Forum member]",
+        date: "2025-08-19",
+        sourceUrl: "https://www.segabg.com/hot/category-economy/ruska-hakerska-armiya-iznudva-institucii-i-firmi-po-cyal-svyat",
+        evidenceImages: ["images/yavor1.png", "images/yavor2.png"]
+    },
+    {
+        name: "Technical University Sofia",
+        domain: "tu-sofia.bg",
+        sector: "public",
+        economicSector: "Public administration",
+        threatActor: "NarodArmiya [Forum member]",
+        date: "2025-08-19",
+        sourceUrl: "https://www.segabg.com/hot/category-economy/ruska-hakerska-armiya-iznudva-institucii-i-firmi-po-cyal-svyat",
+        evidenceImages: ["images/yavor1.png"]
+    },
+    {
+        name: "Bulgarian ISP [Unknown]",
+        domain: "",
+        sector: "private",
+        economicSector: "Telecom",
+        threatActor: "Z10N Predator [Forum member]",
+        date: "2025-07-28",
+        sourceUrl: "http://breachforums.hn/Thread-Internal-Access-to-Bulgaria-Internet-Provider",
+        evidenceImages: ["images/bulgaria_ISP.png"]
+    },
+    {
+        name: "Econt Express",
+        domain: "Econt",
+        sector: "private",
+        economicSector: "Supply Chain",
+        threatActor: "Z10N Predator [Forum member]",
+        date: "2025-07-28",
+        sourceUrl: "http://breachforums.hn",
+        evidenceImages: ["images/econt.png"]
+    },
+    {
+        name: "Lukoil Bulgaria",
+        domain: "lukoil.bg",
+        sector: "private",
+        economicSector: "Energy",
+        threatActor: "Z10N Predator [Forum member]",
+        date: "2025-07-28",
+        sourceUrl: "http://breachforums.hn",
+        evidenceImages: ["images/lukoil.bg.png"]
+    },
+    {
+        name: "Sofia Municipality - GPS System [inspectorat-so.org]",
+        domain: "inspectorat-so.org",
+        sector: "public",
+        economicSector: "Public administration",
+        threatActor: "Z10N Predator [Forum member]",
+        date: "2025-07-29",
+        sourceUrl: "http://breachforums.hn",
+        evidenceImages: ["images/sofia_municipality.png"]
     }
 ];
