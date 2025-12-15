@@ -324,8 +324,8 @@ const leaks = [
         evidenceImages: ["images/multiple_sites_soni.png"]
     },
     {
-        name: "A1.bg",
-        domain: "",
+        name: "A1 Bulgaria",
+        domain: "a1.bg",
         sector: "private",
         economicSector: "Technology & Telecom",
         threatActor: "Crime [Forum member]",
@@ -1485,7 +1485,7 @@ const leaks = [
     },
     {
         name: "А1 Bulgaria",
-        domain: "",
+        domain: "a1.bg",
         sector: "private",
         economicSector: "Telecom",
         threatActor: "Wieko [Forum member]",
