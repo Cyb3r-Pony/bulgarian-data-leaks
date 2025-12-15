@@ -1370,7 +1370,7 @@ const leaks = [
         economicSector: "Digital Commerce",
         threatActor: "Z10N Predator [Forum member]",
         date: "2025-08-01",
-        sourceUrl: "https://breachforums.st",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=180482&highlight=.bg",
         evidenceImages: ["images/bamf.bg.png"]
     },
     {
@@ -1410,7 +1410,7 @@ const leaks = [
         economicSector: "Industrial",
         threatActor: "Michaell [Forum member]",
         date: "2025-08-07",
-        sourceUrl: "https://darkforums.st",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=181161&highlight=.bg",
         evidenceImages: ["images/pangratz.bg.png"]
     },
     {
@@ -1482,5 +1482,55 @@ const leaks = [
         date: "2025-07-29",
         sourceUrl: "http://breachforums.hn",
         evidenceImages: ["images/sofia_municipality.png"]
+    },
+    {
+        name: "А1 Bulgaria",
+        domain: "",
+        sector: "private",
+        economicSector: "Telecom",
+        threatActor: "Wieko [Forum member]",
+        date: "2024-12",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=180447&highlight=.bg",
+        evidenceImages: ["images/a1.png"]
+    },
+    {
+        name: "Solarpro Holding",
+        domain: "solarpro.bg",
+        sector: "private",
+        economicSector: "Energy",
+        threatActor: "Coinbase Cartel",
+        date: "2024-12",
+        sourceUrl: "http://fjg4zi4opkxkvdz7mvwp7h6goe4tcby3hhkrz43pht4j3vakhy75znyd.onion/companies/solarpro",
+        evidenceImages: ["images/solarpro_holding.png"]
+    },
+    {
+        name: "blitz.bg",
+        domain: "blitz.bg",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "kisel228 [Forum member]",
+        date: "2023-07",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=101945&highlight=blitz.bg",
+        evidenceImages: ["images/blitz.bg.png"]
+    },
+    {
+        name: "Bulgarian Registry Agency",
+        domain: "",
+        sector: "public",
+        economicSector: "Public administration",
+        threatActor: "OpenBullet [Forum member]",
+        date: "2024-09",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=170816&highlight=.bg",
+        evidenceImages: ["images/Bulgarian_Registry_Agency.png"]
+    },
+    {
+        name: "FastFood.bg [12 000 Addresses]",
+        domain: "fastfood.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Ransomed.vc Affiliate",
+        date: "2023-06",
+        sourceUrl: "https://breachforums.bf/showthread.php?tid=75316&highlight=.bg",
+        evidenceImages: ["images/FastFood.bg.png"]
     }
 ];
