@@ -1533,4 +1533,35 @@ const leaks = [
         sourceUrl: "https://breachforums.bf/showthread.php?tid=75316&highlight=.bg",
         evidenceImages: ["images/FastFood.bg.png"]
     }
+    {
+        name: "In Time [2,300,000 rows]",
+        domain: "intime.bg",
+        sector: "private",
+        economicSector: "Supply Chain",
+        threatActor: "johngotti",
+        date: "2025-12-16",
+        sourceUrl: "https://breachstars.io/topic/intimebg-courier-and-logistic-ywt06xyvfnap",
+        evidenceImages: ["images/intime.bg.png", "images/intime.bg_2.png", "images/intime.bg_3.png"]
+    }   
+    {
+        name: "Ozone [100,000 rows]",
+        domain: "ozone.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "johngotti",
+        date: "2025-12-11",
+        sourceUrl: "https://breachstars.io/topic/ozonebg-online-retailer-qbcteb5limr1",
+        evidenceImages: ["images/ozone.bg.png", "images/ozone.bg_2.png", "images/ozone.bg_3.png"]
+    }
+    {
+        name: "Interlogistica [4,600,000 rows]",
+        domain: "interlogistica.bg",
+        sector: "private",
+        economicSector: "Supply Chain",
+        threatActor: "carlogambino",
+        date: "2025-12-22",
+        sourceUrl: "https://breachforums.bf/Thread-DATABASE-Interlogistica-bg-Bulgaria-4MIL",
+        evidenceImages: ["images/interlogistica.bg.png"]
+    }
+
 ];
