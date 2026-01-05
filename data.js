@@ -1562,6 +1562,36 @@ const leaks = [
         date: "2025-12-22",
         sourceUrl: "https://breachforums.bf/Thread-DATABASE-Interlogistica-bg-Bulgaria-4MIL",
         evidenceImages: ["images/interlogistica.bg.png"]
+    },
+    {
+        "name": "Bulgaria Property Law",
+        "domain": "bulgariapropertylaw.com",
+        "sector": "private",
+        "economicSector": "General Services",
+        "threatActor": "Chercheb [Forum member]",
+        "date": "2023-12-01",
+        "sourceUrl": "https://breachforums.bf/Thread-COLLECTION-1200-Databases-Breached?highlight=bulgaria",
+        "evidenceImages": ["images/bulgariapropertylaw.com.png"]
+    },
+    {
+        "name": "1win Bulgaria",
+        "domain": "1win.com",
+        "sector": "private",
+        "economicSector": "General Services",
+        "threatActor": "CountrySorter [Forum member]",
+        "date": "2025-02-08",
+        "sourceUrl": "https://breachforums.bf/Thread-DATABASE-Best-1win-com-Database-By-Country-Cleaned?highlight=bulgaria",
+        "evidenceImages": ["images/1winbulgaria.png"]
+    },
+    {
+        "name": "Mate.bg",
+        "domain": "mate.bg",
+        "sector": "private",
+        "economicSector": "General Services",
+        "threatActor": "hellsec [Forum member]",
+        "date": "2024-05-31",
+        "sourceUrl": "https://breachforums.bf/Thread-MATE-BG-2023-Dump",
+        "evidenceImages": ["images/mate.bg.png"]
     }
 
 ];
