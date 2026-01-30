@@ -1592,6 +1592,17 @@ const leaks = [
         "date": "2024-05-31",
         "sourceUrl": "https://breachforums.bf/Thread-MATE-BG-2023-Dump",
         "evidenceImages": ["images/mate.bg.png"]
+    },
+    {
+        name: "Consento.bg",
+        domain: "consento.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "temporary [Forum member]",
+        date: "2026-01-29",
+        sourceUrl: "https://breachforums.bf/Thread-SELLING-Bulgaria-Consento-32-6k",
+        evidenceImages: ["images/consento.png"]
+
     }
 
 ];
