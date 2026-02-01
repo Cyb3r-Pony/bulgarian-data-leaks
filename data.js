@@ -1603,6 +1603,36 @@ const leaks = [
         sourceUrl: "https://breachforums.bf/Thread-SELLING-Bulgaria-Consento-32-6k",
         evidenceImages: ["images/consento.png"]
 
+    },
+    {
+        name: "Virginia Records - 135GB",
+        domain: "virginiarecords.com",
+        sector: "private",
+        economicSector: "Media",
+        threatActor: "Everest",
+        date: "2026-01-10",
+        sourceUrl: "http://ransomocmou6mnbquqz44ewosbkjk3o5qjsl3orawojexfook2j7esad.onion",
+        evidenceImages: ["images/virginia-records.png"]
+    },
+    {
+        name: "Yource Bulgaria & Greece",
+        domain: "yourcebulgaria.cc",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Crypto24",
+        date: "2025-12-30",
+        sourceUrl: "http://j5o5y2feotmhvr7cbcp2j2ewayv5mn5zenl3joqwx67gtfchhezjznad.onion/",
+        evidenceImages: ["images/yource-bg.png"]
+    },
+    {
+        name: "Vitosha Park Hotel",
+        domain: "vitoshaparkhotel.com",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "Anubis",
+        date: "2026-01-25",
+        sourceUrl: "http://om6q4a6cyipxvt7ioudxt24cw4oqu4yodmqzl25mqd2hgllymrgu4aqd.onion",
+        evidenceImages: ["images/vitosha-1.png", "images/vitosha-2.png"]
     }
 
 ];
