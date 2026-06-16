@@ -1622,7 +1622,7 @@ const leaks = [
         threatActor: "Crypto24",
         date: "2025-12-30",
         sourceUrl: "http://j5o5y2feotmhvr7cbcp2j2ewayv5mn5zenl3joqwx67gtfchhezjznad.onion/",
-        evidenceImages: ["images/yource-bg.png"]
+        evidenceImages: ["images/yource-bg.png", "images/yource-1.png"]
     },
     {
         name: "Vitosha Park Hotel",
@@ -1633,6 +1633,86 @@ const leaks = [
         date: "2026-01-25",
         sourceUrl: "http://om6q4a6cyipxvt7ioudxt24cw4oqu4yodmqzl25mqd2hgllymrgu4aqd.onion",
         evidenceImages: ["images/vitosha-1.png", "images/vitosha-2.png"]
+    },
+    {
+        name: "store.bg [2M Unique lines]",
+        domain: "store.bg",
+        sector: "private",
+        economicSector: "Retail",
+        threatActor: "Jurak [Forum member]",
+        date: "2026-02-18",
+        sourceUrl: "https://breachforums.as/Thread-SELLING-store-bg-Bulgaria--188435",
+        evidenceImages: ["images/store.bg.png"]
+    },
+    {
+        name: "Remington BG [150,000 rows]",
+        domain: "remington.bg",
+        sector: "private",
+        economicSector: "Retail",
+        threatActor: "Niphra [Forum member]",
+        date: "2026-02-25",
+        sourceUrl: "https://breachforums.as/Thread-VERIFIED-Bulgaria-Remington-BG-150-000-Rows?highlight=bulgaria",
+        evidenceImages: ["images/remington.bg.png"]
+    },
+    {
+        name: "BeautyExpert.bg",
+        domain: "beautyexpert.bg",
+        sector: "private",
+        economicSector: "Retail",
+        threatActor: "wizard [Forum member]",
+        date: "2026-06-03",
+        sourceUrl: "https://darkforums.su/Thread-DATABASE-Bulgaria-Free-DB-beautyexpert-bg?highlight=bulgaria",
+        evidenceImages: ["images/beautyexperts.bg.png"]
+    },
+    {
+        name: "Imot.bg",
+        domain: "imot.bg",
+        sector: "private",
+        economicSector: "Real Estate",
+        threatActor: "Unknown",
+        date: "2026-05-25",
+        sourceUrl: "https://x.com/DailyDarkWeb/status/2058744773586932224",
+        evidenceImages: ["images/imot.bg-1.png", "images/imot.bg-2.jpeg"]
+    },
+    {
+        name: "Robusta.bg",
+        domain: "robusta.bg",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Bavacai [APT]",
+        date: "2026-05-26",
+        sourceUrl: "http://t33zoj4qwv455fog7qnb2azi5xcdxkixughmmduzbw2rtdgryqfbh6id.onion/company/sitgroup-robusta/info",
+        evidenceImages: ["images/robusta.bg.png"]
+    },
+    {
+        name: "kupi-chasovnik.com [280,000 customer records]",
+        domain: "kupi-chasovnik.com",
+        sector: "private",
+        economicSector: "Digital Commerce",
+        threatActor: "Unknown",
+        date: "2026-04-09",
+        sourceUrl: "https://x.com/DailyDarkWeb/status/2042243013347360988",
+        evidenceImages: ["images/kupi-chasovnik.bg-1.png", "images/kupi-chasovnik.bg-2.jpeg"]
+    },
+    {
+        name: "bright-eng.com",
+        domain: "bright-eng.com",
+        sector: "private",
+        economicSector: "Industrial",
+        threatActor: "sentap [Forum member]",
+        date: "2025-04-01",
+        sourceUrl: "https://x.com/FalconFeedsio/status/1906946662263914620",
+        evidenceImages: ["images/bright-eng.com-1.png", "images/bright-eng.com-2.jpeg"]
+    },
+    {
+        name: "Vinprom Peshtera (vp-brands.com)",
+        domain: "vp-brands.com",
+        sector: "private",
+        economicSector: "Industrial",
+        threatActor: "LockBit [APT]",
+        date: "2026-05-07",
+        sourceUrl: "http://lockbitapt67g6rwzjbcxnww5efpg4qok6vpfeth7wx3okj52ks4wtad.onion",
+        evidenceImages: ["images/vp-brands.com-1.png", "images/vp-brands.com-2.png", "images/vp-brands.com-3.png", "images/vp-brands.com-4.jpeg"]
     }
 
 ];
