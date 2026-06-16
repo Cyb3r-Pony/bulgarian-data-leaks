@@ -18,22 +18,51 @@
 
     <div class="container">
         <header>
-            <h1 id="mainTitle">BULGARIAN DATA LEAKS</h1>
+            <div class="header-scanline" aria-hidden="true"></div>
+            <div class="header-eyebrow" id="headerEyebrow">// THREAT INTELLIGENCE DATABASE</div>
+            <h1 id="mainTitle" data-text="BULGARIAN DATA LEAKS">BULGARIAN DATA LEAKS</h1>
+            <div class="header-status" aria-hidden="true">
+                <span class="status-dot"></span>
+                <span id="headerStatus">LIVE MONITORING</span>
+            </div>
             <div class="description" id="description">Tracking security breaches exposing personally identifiable information of Bulgarian citizens and confidential internal documents of organizations</div>
             <div class="powered-by" id="poweredBy">Powered by Claude Sonnet 4.5 by Anthropic</div>
         </header>
 
         <div class="stats-counters">
-            <div class="counter-box">
-                <div class="counter-label" id="totalLabel">Total Leaks</div>
+            <div class="counter-box total">
+                <span class="counter-accent" aria-hidden="true"></span>
+                <div class="counter-head">
+                    <svg class="counter-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <ellipse cx="12" cy="6" rx="7.5" ry="3" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M4.5 6v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V6" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M4.5 12v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6" stroke="currentColor" stroke-width="1.6"/>
+                    </svg>
+                    <div class="counter-label" id="totalLabel">Total Leaks</div>
+                </div>
                 <div class="counter-number" id="totalCounter">0</div>
             </div>
             <div class="counter-box private">
-                <div class="counter-label" id="privateLabel">Private Sector</div>
+                <span class="counter-accent" aria-hidden="true"></span>
+                <div class="counter-head">
+                    <svg class="counter-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="8" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M8 8V6.5A2.5 2.5 0 0 1 10.5 4h3A2.5 2.5 0 0 1 16 6.5V8" stroke="currentColor" stroke-width="1.6"/>
+                    </svg>
+                    <div class="counter-label" id="privateLabel">Private Sector</div>
+                </div>
                 <div class="counter-number" id="privateCounter">0</div>
             </div>
             <div class="counter-box public">
-                <div class="counter-label" id="publicLabel">Public Sector</div>
+                <span class="counter-accent" aria-hidden="true"></span>
+                <div class="counter-head">
+                    <svg class="counter-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 20h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                        <path d="M5 20V9l7-4 7 4v11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                        <path d="M9 20v-5h6v5" stroke="currentColor" stroke-width="1.6"/>
+                    </svg>
+                    <div class="counter-label" id="publicLabel">Public Sector</div>
+                </div>
                 <div class="counter-number" id="publicCounter">0</div>
             </div>
         </div>

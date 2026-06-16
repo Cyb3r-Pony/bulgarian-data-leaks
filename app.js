@@ -14,6 +14,8 @@ function formatDate(dateStr) {
 const translations = {
     en: {
         mainTitle: 'BULGARIAN DATA LEAKS',
+        headerEyebrow: '// THREAT INTELLIGENCE DATABASE',
+        headerStatus: 'LIVE MONITORING',
         description: 'Tracking security breaches exposing personally identifiable information of Bulgarian citizens and confidential internal documents of organizations',
         poweredBy: 'Powered by Claude Sonnet 4.5 by Anthropic',
         btnAll: 'All Leaks',
@@ -48,6 +50,8 @@ const translations = {
     },
     bg: {
         mainTitle: 'ИЗТИЧАНЕ НА ДАННИ В БЪЛГАРИЯ',
+        headerEyebrow: '// БАЗА ДАННИ ЗА КИБЕРЗАПЛАХИ',
+        headerStatus: 'НАБЛЮДЕНИЕ НА ЖИВО',
         description: 'Проследяване на нарушения на сигурността, водещи до изтичане на лична информация на български граждани и поверителни вътрешни документи на организации',
         poweredBy: 'Създадено с Claude Sonnet 4.5 от Anthropic',
         btnAll: 'Всички Изтичания',
@@ -167,7 +171,11 @@ function toggleLanguage() {
 
 function updateTranslations() {
     const t = translations[currentLang];
-    document.getElementById('mainTitle').textContent = t.mainTitle;
+    const mainTitleEl = document.getElementById('mainTitle');
+    mainTitleEl.textContent = t.mainTitle;
+    mainTitleEl.setAttribute('data-text', t.mainTitle);
+    document.getElementById('headerEyebrow').textContent = t.headerEyebrow;
+    document.getElementById('headerStatus').textContent = t.headerStatus;
     document.getElementById('description').textContent = t.description;
     document.getElementById('poweredBy').textContent = t.poweredBy;
     document.getElementById('btnAll').textContent = t.btnAll;
