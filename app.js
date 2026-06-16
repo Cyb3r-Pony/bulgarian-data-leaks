@@ -293,7 +293,7 @@ function renderLeaks() {
         if (hasValidEvidence) {
             // Show actual images from evidenceImages array
             evidenceHTML = leak.evidenceImages.map(imgPath => `
-                <img src="${imgPath}" alt="Evidence" style="width: 100%; height: auto; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);">
+                <img src="${imgPath}" alt="Evidence" style="width: 100%; height: auto; border: 1px solid rgba(120, 130, 145, 0.3); border-radius: 6px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);">
             `).join('');
         }
         
