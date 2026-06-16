@@ -31,6 +31,10 @@ const translations = {
         evidencePlaceholder: 'Evidence Image',
         noLeaks: 'No leaks found in this category',
         statsTitle: 'Data Leaks by Economic Sector',
+        statsEyebrow: '// SECTOR ANALYSIS',
+        statsSubtitle: 'Distribution of tracked breaches across industries',
+        sectorsTracked: 'sectors tracked',
+        mostAffected: 'Most affected',
         disclaimerTitle: 'Legal Disclaimer',
         disclaimerText: 'This website does not engage in the acquisition, exfiltration, downloading, possession, hosting, access, consultation, redistribution, or disclosure of unlawfully obtained data. This platform indexes only publicly visible information posted by ransomware operators and open web sources without accessing or obtaining the underlying stolen content. The service is provided to support public awareness, legitimate research, and cyber-resilience. No stolen personal or confidential data is collected or distributed via this site.',
         totalLabel: 'Total Leaks',
@@ -61,6 +65,10 @@ const translations = {
         evidencePlaceholder: 'Доказателствена Снимка',
         noLeaks: 'Няма изтичания в тази категория',
         statsTitle: 'Изтичания по Икономически Сектор',
+        statsEyebrow: '// АНАЛИЗ ПО СЕКТОРИ',
+        statsSubtitle: 'Разпределение на проследените пробиви по индустрии',
+        sectorsTracked: 'проследени сектора',
+        mostAffected: 'Най-засегнат',
         disclaimerTitle: 'Правна Декларация',
         disclaimerText: 'Този уебсайт не се занимава с придобиване, изтичане, изтегляне, притежание, хостинг, достъп, консултиране, преразпространение або разкриване на незаконно получени данни. Тази платформа индексира само публично видима информация, публикувана от операторите на рансъмуер и отворени уеб източници, без да осъществява достъп или да получава основното откраднато съдържание. Услугата се предоставя в подкрепа на обществената осведоменост, легитимни изследвания и киберустойчивост. Никакви откраднати лични или поверителни данни не се събират или разпространяват чрез този сайт.',
         totalLabel: 'Всички Изтичания',
@@ -168,6 +176,8 @@ function updateTranslations() {
     document.getElementById('btnLatest').textContent = t.btnLatest;
     document.getElementById('langBtn').textContent = t.langBtn;
     document.getElementById('statsTitle').textContent = t.statsTitle;
+    document.getElementById('statsEyebrow').textContent = t.statsEyebrow;
+    document.getElementById('statsSubtitle').textContent = t.statsSubtitle;
     document.getElementById('disclaimerTitle').textContent = t.disclaimerTitle;
     document.getElementById('disclaimerText').textContent = t.disclaimerText;
     document.getElementById('totalLabel').textContent = t.totalLabel;
@@ -322,17 +332,25 @@ function renderLeaks() {
     }).join('');
 }
 
-// Radar animation variables
-let radarAngle = 0;
-let radarAnimationId = null;
+// Escape HTML to safely inject sector labels
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
 
 function renderChart() {
+    const t = translations[currentLang];
+
     // Count leaks by economic sector using normalized and expanded sectors
     const sectorCounts = {};
     leaks.forEach(leak => {
         // Get normalized sectors for this leak (may be multiple)
         const normalizedSectors = normalizeAndExpandSectors(leak.economicSector);
-        
+
         // Increment count for each normalized sector
         normalizedSectors.forEach(sector => {
             sectorCounts[sector] = (sectorCounts[sector] || 0) + 1;
@@ -341,179 +359,67 @@ function renderChart() {
 
     // Convert to array of [sector, count] pairs and sort by count descending (highest first)
     const sortedSectorPairs = Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]);
-    
+
     // Extract sorted sectors and counts
     const sectors = sortedSectorPairs.map(pair => pair[0]);
     const counts = sortedSectorPairs.map(pair => pair[1]);
+    const maxCount = counts.length ? Math.max(...counts) : 0;
 
-    // Determine color based on count (high=red, medium=orange, low=green)
-    const maxCount = Math.max(...counts);
-    const getColorForCount = (count) => {
-        const ratio = count / maxCount;
-        if (ratio > 0.6) return '#ff0000'; // High - red
-        if (ratio > 0.3) return '#ff6600'; // Medium - orange
-        return '#00ff00'; // Low - green
+    // Intensity tier by share of the most-affected sector:
+    // high = bright red, medium = warm coral, low = deep crimson.
+    const getTier = (count) => {
+        const ratio = maxCount ? count / maxCount : 0;
+        if (ratio > 0.6) return 'high';
+        if (ratio > 0.3) return 'medium';
+        return 'low';
     };
 
-    // Position sectors around the radar circle
-    const sectorPositions = sectors.map((sector, index) => {
-        const angle = (index / sectors.length) * Math.PI * 2;
-        return {
-            sector,
-            count: counts[index],
-            angle,
-            color: getColorForCount(counts[index]),
-            pulsePhase: Math.random() * Math.PI * 2
-        };
-    });
+    const chart = document.getElementById('sectorChart');
+    if (!chart) return;
 
-    const canvas = document.getElementById('sectorChart');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas size
-    canvas.width = 500;
-    canvas.height = 500;
-    
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radarRadius = 200;
+    // Build the animated horizontal bars. Width is driven by count/maxCount;
+    // a CSS scaleX animation grows each bar from the left with a staggered delay.
+    const barsHTML = sectors.map((sector, index) => {
+        const count = counts[index];
+        const pct = maxCount ? (count / maxCount) * 100 : 0;
+        const tier = getTier(count);
+        const delay = Math.min(index * 60, 700);
+        return `
+            <div class="sector-bar" style="--bar-delay: ${delay}ms">
+                <div class="sector-bar-label" title="${escapeHtml(sector)}">${escapeHtml(sector)}</div>
+                <div class="sector-bar-track">
+                    <div class="sector-bar-fill ${tier}" style="width: ${pct}%;">
+                        <span class="sector-bar-tip"></span>
+                    </div>
+                    <span class="sector-bar-count">${count}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-    // Stop any existing animation
-    if (radarAnimationId) {
-        cancelAnimationFrame(radarAnimationId);
+    chart.innerHTML = barsHTML || `<div class="sector-bars-empty">${t.noLeaks}</div>`;
+
+    // Compact summary strip in place of the old legend.
+    const legend = document.getElementById('chartLegend');
+    if (legend) {
+        if (sectors.length) {
+            legend.innerHTML = `
+                <div class="chart-summary">
+                    <div class="chart-summary-item">
+                        <span class="chart-summary-value">${sectors.length}</span>
+                        <span class="chart-summary-label">${t.sectorsTracked}</span>
+                    </div>
+                    <div class="chart-summary-divider"></div>
+                    <div class="chart-summary-item">
+                        <span class="chart-summary-label">${t.mostAffected}</span>
+                        <span class="chart-summary-top">${escapeHtml(sectors[0])} · ${counts[0]}</span>
+                    </div>
+                </div>
+            `;
+        } else {
+            legend.innerHTML = '';
+        }
     }
-
-    // Radar animation function
-    function animateRadar() {
-        // Clear canvas
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Draw radar circles (grid)
-        ctx.strokeStyle = 'rgba(0, 255, 0, 0.2)';
-        ctx.lineWidth = 1;
-        for (let i = 1; i <= 4; i++) {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, (radarRadius / 4) * i, 0, Math.PI * 2);
-            ctx.stroke();
-        }
-
-        // Draw crosshairs
-        ctx.strokeStyle = 'rgba(0, 255, 0, 0.3)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY - radarRadius);
-        ctx.lineTo(centerX, centerY + radarRadius);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(centerX - radarRadius, centerY);
-        ctx.lineTo(centerX + radarRadius, centerY);
-        ctx.stroke();
-
-        // Draw sector indicators
-        sectorPositions.forEach((sectorData, index) => {
-            const x = centerX + Math.cos(sectorData.angle) * radarRadius * 0.85;
-            const y = centerY + Math.sin(sectorData.angle) * radarRadius * 0.85;
-
-            // Calculate pulse effect
-            const pulseValue = Math.sin(Date.now() / 1000 + sectorData.pulsePhase) * 0.3 + 0.7;
-            
-            // Check if scan line is near this sector
-            const angleDiff = Math.abs(((radarAngle - sectorData.angle + Math.PI * 3) % (Math.PI * 2)) - Math.PI);
-            const isScanning = angleDiff < 0.3;
-            
-            // Base size based on count
-            const baseSize = 3 + (sectorData.count / maxCount) * 8;
-            const size = isScanning ? baseSize * 2 : baseSize * pulseValue;
-
-            // Draw glow
-            const glowSize = isScanning ? size * 3 : size * 1.5;
-            const gradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
-            gradient.addColorStop(0, sectorData.color);
-            gradient.addColorStop(0.5, sectorData.color + '88');
-            gradient.addColorStop(1, sectorData.color + '00');
-            
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(x, y, glowSize, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Draw core dot
-            ctx.fillStyle = sectorData.color;
-            ctx.shadowBlur = isScanning ? 20 : 10;
-            ctx.shadowColor = sectorData.color;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            // Draw connecting line
-            ctx.strokeStyle = sectorData.color + '33';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        });
-
-        // Draw scanning line with fade trail
-        const scanGradient = ctx.createLinearGradient(
-            centerX,
-            centerY,
-            centerX + Math.cos(radarAngle) * radarRadius,
-            centerY + Math.sin(radarAngle) * radarRadius
-        );
-        scanGradient.addColorStop(0, 'rgba(0, 255, 0, 0)');
-        scanGradient.addColorStop(0.7, 'rgba(0, 255, 0, 0.5)');
-        scanGradient.addColorStop(1, 'rgba(0, 255, 0, 0.9)');
-
-        ctx.strokeStyle = scanGradient;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(
-            centerX + Math.cos(radarAngle) * radarRadius,
-            centerY + Math.sin(radarAngle) * radarRadius
-        );
-        ctx.stroke();
-
-        // Draw fade trail
-        for (let i = 1; i <= 8; i++) {
-            const trailAngle = radarAngle - (i * 0.1);
-            const trailAlpha = 0.3 * (1 - i / 8);
-            ctx.strokeStyle = `rgba(0, 255, 0, ${trailAlpha})`;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(
-                centerX + Math.cos(trailAngle) * radarRadius,
-                centerY + Math.sin(trailAngle) * radarRadius
-            );
-            ctx.stroke();
-        }
-
-        // Update angle
-        radarAngle += 0.02;
-        if (radarAngle > Math.PI * 2) {
-            radarAngle -= Math.PI * 2;
-        }
-
-        radarAnimationId = requestAnimationFrame(animateRadar);
-    }
-
-    // Start animation
-    animateRadar();
-
-    // Render legend with new styling
-    const legendHTML = sectors.map((sector, index) => `
-        <div class="legend-item">
-            <div class="legend-color" style="background-color: ${getColorForCount(counts[index])}; box-shadow: 0 0 10px ${getColorForCount(counts[index])}88;"></div>
-            <div class="legend-label">${sector}</div>
-            <div class="legend-value">${counts[index]}</div>
-        </div>
-    `).join('');
-    
-    document.getElementById('chartLegend').innerHTML = legendHTML;
 }
 
 // Evidence Lightbox Functions

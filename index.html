@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BG Data Leaks Database</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="mask-icon" href="favicon.svg" color="#ff2b3d">
+    <meta name="theme-color" content="#0b0e13">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,9 +39,14 @@
         </div>
 
         <div class="stats-section">
-            <h2 class="stats-title" id="statsTitle">Data Leaks by Economic Sector</h2>
+            <div class="stats-header">
+                <div class="stats-eyebrow" id="statsEyebrow">// SECTOR ANALYSIS</div>
+                <h2 class="stats-title" id="statsTitle">Data Leaks by Economic Sector</h2>
+                <div class="stats-subtitle" id="statsSubtitle">Distribution of tracked breaches across industries</div>
+            </div>
             <div class="chart-container">
-                <canvas id="sectorChart"></canvas>
+                <div class="chart-scanline" aria-hidden="true"></div>
+                <div id="sectorChart" class="sector-bars" role="img" aria-label="Bar chart of data leaks by economic sector"></div>
             </div>
             <div class="chart-legend" id="chartLegend"></div>
         </div>
