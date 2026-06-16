@@ -2,6 +2,15 @@ let currentLang = 'en';
 let currentFilter = 'all';
 let searchQuery = '';
 
+// Format date from YYYY-MM-DD / YYYY-MM / YYYY to DD/MM/YYYY
+function formatDate(dateStr) {
+    if (!dateStr || dateStr === 'Unknown') return dateStr;
+    const parts = dateStr.trim().split('-');
+    if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    if (parts.length === 2) return `${parts[1]}/${parts[0]}`;
+    return parts[0]; // year only
+}
+
 const translations = {
     en: {
         mainTitle: 'BULGARIAN DATA LEAKS',
@@ -292,7 +301,7 @@ function renderLeaks() {
                     </div>
                     <div class="info-row">
                         <span class="info-label">${t.date}:</span>
-                        <span class="info-value">${leak.date}</span>
+                        <span class="info-value">${formatDate(leak.date)}</span>
                     </div>
                 </div>
 
@@ -573,4 +582,14 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCounters();
     renderLeaks();
     renderChart();
+
+    // Back to top button visibility
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
 });
