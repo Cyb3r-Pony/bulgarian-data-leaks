@@ -107,7 +107,7 @@ function normalizeAndExpandSectors(rawSectorString) {
     // Special case: domain list pattern - starts with [ and contains .bg domains
     if (raw.startsWith('[') && raw.includes('.bg')) {
         // This represents multiple Bulgarian e-commerce/media sites
-        return ['Digital Commerce', 'Media'];
+        return ['Commerce', 'Media'];
     }
 
     // Split on & to handle multi-sector fields
@@ -127,9 +127,9 @@ function normalizeAndExpandSectors(rawSectorString) {
             return 'Energy';
         }
 
-        // Combine E-commerce + Retail → Digital Commerce
+        // Combine E-commerce + Retail → Commerce
         if (lower === 'e-commerce' || lower === 'ecommerce' || lower === 'retail') {
-            return 'Digital Commerce';
+            return 'Commerce';
         }
 
         // Combine IT + Telecommunication → Technology & Telecom
@@ -137,8 +137,8 @@ function normalizeAndExpandSectors(rawSectorString) {
             return 'Technology & Telecom';
         }
 
-        // Combine Pharmaceutical + Healthcare → Healthcare & Pharma
-        if (lower === 'pharmaceutical' || lower === 'healthcare') {
+        // Combine Pharmaceutical + Healthcare + Pharma → Healthcare & Pharma
+        if (lower === 'pharmaceutical' || lower === 'healthcare' || lower === 'pharma') {
             return 'Healthcare & Pharma';
         }
 

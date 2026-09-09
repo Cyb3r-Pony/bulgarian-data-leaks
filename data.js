@@ -1783,6 +1783,56 @@ const leaks = [
         date: "2026-07-18",
         sourceUrl: "https://www.ransomware.live/id/ZXVyb2lucy5iZ0BrcnliaXQ",
         evidenceImages: ["images/euroins.png", "images/euroins-2.png"]
+    },
+    {
+        name: "Phoenix Pharma",
+        domain: "phoenixpharma.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "scorpius [Forum member]",
+        date: "2026-09-06",
+        sourceUrl: "https://pwnforums.st/Thread-PHOENIX-Pharma-RS-BG",
+        evidenceImages: ["images/PHOENIX-Pharma.png"]
+    },
+    {
+        name: "Air.bg",
+        domain: "air.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "scorpius [Forum member]",
+        date: "2026-08-27",
+        sourceUrl: "https://pwnforums.st/Thread-air-bg-internal-personnel",
+        evidenceImages: ["images/air.bg.png"]
+    },
+    {
+        name: "DZI Insurance [3.1M Records]",
+        domain: "dzi.bg",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "Intelligence [Forum member]",
+        date: "2026-09-01",
+        sourceUrl: "https://pwnforums.st/Thread-SELLING-DZI-Insurance-3-1M-Records?highlight=bulgaria",
+        evidenceImages: ["images/DZI-Insurance.png"]
+    },
+    {
+        name: "Bulgarian Insurance Company [2.2M Records]",
+        domain: "",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "404muse [Forum member]",
+        date: "2026-08-31",
+        sourceUrl: "https://darkforums.as/Thread-DATABASE-Bulgarian-Insurance-Company-Customer-Database-—-2-2M-Records-🇧🇬?highlight=bulgaria",
+        evidenceImages: ["images/Bulgarian-Insurance-2.2M.png"]
+    },
+    {
+        name: "subra.bg",
+        domain: "subra.bg",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "Majinahanashi",
+        date: "2026-07-11",
+        sourceUrl: "http://lthicpjqc7gkn5eq3epxndc2uig3yngvcbdya4u3m3byjod5km4yuwqd.onion/#post/blog-8",
+        evidenceImages: ["images/subra-1.png", "images/subra-2.png"]
     }
 
 ];
