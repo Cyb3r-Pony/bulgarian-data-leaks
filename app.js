@@ -21,7 +21,6 @@ const translations = {
         btnAll: 'All Leaks',
         btnPublic: 'Public Sector',
         btnPrivate: 'Private Sector',
-        btnLatest: 'Latest 10',
         langBtn: 'БГ',
         public: 'Public',
         private: 'Private',
@@ -42,7 +41,6 @@ const translations = {
         totalLabel: 'Total Leaks',
         publicLabel: 'Public Sector',
         privateLabel: 'Private Sector',
-        latestLabel: 'Latest 10',
         searchTitle: 'Search for Company',
         searchPlaceholder: 'Enter company name or domain...',
         searchResults: 'results found',
@@ -57,7 +55,6 @@ const translations = {
         btnAll: 'Всички Изтичания',
         btnPublic: 'Публичен Сектор',
         btnPrivate: 'Частен Сектор',
-        btnLatest: 'Последни 10',
         langBtn: 'EN',
         public: 'Публичен',
         private: 'Частен',
@@ -78,7 +75,6 @@ const translations = {
         totalLabel: 'Всички Изтичания',
         publicLabel: 'Публичен Сектор',
         privateLabel: 'Частен Сектор',
-        latestLabel: 'Последни 10',
         searchTitle: 'Търсене на Компания',
         searchPlaceholder: 'Въведете име или домейн...',
         searchResults: 'намерени резултата',
@@ -134,7 +130,8 @@ function normalizeAndExpandSectors(rawSectorString) {
 
         // Combine IT + Telecom + Technology variations → IT & Telecom
         if (lower === 'it' || lower === 'telecommunication' || lower === 'telecom' ||
-            lower === 'technology' || lower === 'technology & telecom') {
+            lower === 'technology' || lower === 'technology & telecom' ||
+            lower === 'it & telecom') {
             return 'IT & Telecom';
         }
 
@@ -182,7 +179,6 @@ function updateTranslations() {
     document.getElementById('btnAll').textContent = t.btnAll;
     document.getElementById('btnPublic').textContent = t.btnPublic;
     document.getElementById('btnPrivate').textContent = t.btnPrivate;
-    document.getElementById('btnLatest').textContent = t.btnLatest;
     document.getElementById('langBtn').textContent = t.langBtn;
     document.getElementById('statsTitle').textContent = t.statsTitle;
     document.getElementById('statsEyebrow').textContent = t.statsEyebrow;
@@ -241,18 +237,7 @@ function renderLeaks() {
     
     // Filter based on current filter
     let filtered;
-    if (currentFilter === 'latest') {
-        // Latest 10: Filter out leaks without valid dates, sort by date descending, take first 10
-        filtered = leaks
-            .filter(l => l.date && l.date !== 'Unknown' && l.date.trim() !== '')
-            .sort((a, b) => {
-                // Parse dates for comparison (format: YYYY-MM-DD or YYYY-MM or YYYY)
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
-                return dateB - dateA; // Descending order (newest first)
-            })
-            .slice(0, 10);
-    } else if (currentFilter === 'all') {
+    if (currentFilter === 'all') {
         filtered = [...leaks];
     } else {
         filtered = leaks.filter(l => l.sector === currentFilter);
@@ -260,16 +245,21 @@ function renderLeaks() {
 
     // Apply search filter
     if (searchQuery) {
-        filtered = filtered.filter(leak => 
+        filtered = filtered.filter(leak =>
             leak.name.toLowerCase().includes(searchQuery) ||
             leak.domain.toLowerCase().includes(searchQuery)
         );
     }
 
-    // Sort alphabetically by name (except for "latest" filter which is already sorted by date)
-    if (currentFilter !== 'latest') {
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
-    }
+    // Sort by date descending (newest first); entries without valid dates go to the bottom
+    filtered.sort((a, b) => {
+        const hasA = a.date && a.date !== 'Unknown' && a.date.trim() !== '';
+        const hasB = b.date && b.date !== 'Unknown' && b.date.trim() !== '';
+        if (!hasA && !hasB) return 0;
+        if (!hasA) return 1;
+        if (!hasB) return -1;
+        return new Date(b.date) - new Date(a.date);
+    });
 
     // Update search results count
     const resultsElement = document.getElementById('searchResults');

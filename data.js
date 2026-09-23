@@ -1853,6 +1853,26 @@ const leaks = [
         date: "2026-09-11",
         sourceUrl: "https://x.com/FalconFeedsio/status/2098388025273450521",
         evidenceImages: ["images/konicaminolta.bg.png"]
+    },
+    {
+        name: "Държавен Фонд Земеделие (dfz.bg)",
+        domain: "dfz.bg",
+        sector: "public",
+        economicSector: "Public administration",
+        threatActor: "scorpius [Forum member]",
+        date: "2026-09-13",
+        sourceUrl: "https://pwnforums.st/Thread-SELLING-State-Fund-Agriculture-88k-Bulgaria?highlight=bulgaria",
+        evidenceImages: ["images/dfz.bg.png"]
+    },
+    {
+        name: "Generali Insurance Bulgaria [1.2M Records]",
+        domain: "generali.bg",
+        sector: "private",
+        economicSector: "Financial",
+        threatActor: "Intelligence [Forum member]",
+        date: "2026-04-28",
+        sourceUrl: "https://pwnforums.st/Thread-SELLING-Generali-Insurance-Bulgaria-1-2M-Records?highlight=bulgaria",
+        evidenceImages: ["images/generali.bg.png"]
     }
 
 ];
