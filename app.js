@@ -132,9 +132,10 @@ function normalizeAndExpandSectors(rawSectorString) {
             return 'Commerce';
         }
 
-        // Combine IT + Telecommunication → Technology & Telecom
-        if (lower === 'it' || lower === 'telecommunication') {
-            return 'Technology & Telecom';
+        // Combine IT + Telecom + Technology variations → IT & Telecom
+        if (lower === 'it' || lower === 'telecommunication' || lower === 'telecom' ||
+            lower === 'technology' || lower === 'technology & telecom') {
+            return 'IT & Telecom';
         }
 
         // Combine Pharmaceutical + Healthcare + Pharma → Healthcare & Pharma
