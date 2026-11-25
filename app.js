@@ -5,6 +5,34 @@ let currentPage = 1;
 const ITEMS_PER_PAGE = 20;
 let currentView = 'grid'; // 'grid' | 'timeline'
 
+function toggleSection(id) {
+    const section = document.getElementById('section' + id.charAt(0).toUpperCase() + id.slice(1));
+    if (!section) return;
+    const collapsed = section.classList.toggle('collapsed');
+    const btn = section.querySelector('.stats-toggle');
+    if (btn) {
+        btn.setAttribute('aria-expanded', String(!collapsed));
+        btn.title = collapsed ? 'Expand section' : 'Collapse section';
+    }
+    try { localStorage.setItem('bgdl-section-' + id, collapsed ? '0' : '1'); } catch(e) {}
+}
+
+function restoreSections() {
+    ['sector', 'timeline'].forEach(id => {
+        try {
+            const val = localStorage.getItem('bgdl-section-' + id);
+            if (val === '0') {
+                const section = document.getElementById('section' + id.charAt(0).toUpperCase() + id.slice(1));
+                if (section) {
+                    section.classList.add('collapsed');
+                    const btn = section.querySelector('.stats-toggle');
+                    if (btn) { btn.setAttribute('aria-expanded', 'false'); btn.title = 'Expand section'; }
+                }
+            }
+        } catch(e) {}
+    });
+}
+
 function toggleTheme() {
     const isLight = document.body.classList.toggle('light');
     document.getElementById('themeToggle').textContent = isLight ? '☽' : '☀';
@@ -356,11 +384,16 @@ function renderLeaks() {
     }
 
     if (currentView === 'timeline') {
+        container.classList.remove('leak-grid');
+        container.classList.add('leak-timeline-host');
         renderTimelineView(filtered, container, t);
         document.getElementById('paginationContainer').innerHTML = '';
         updateURL();
         return;
     }
+    // Grid mode
+    container.classList.add('leak-grid');
+    container.classList.remove('leak-timeline-host');
 
     // Grid view with pagination
     const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -413,54 +446,71 @@ function goToPage(page) {
 
 function renderTimelineView(filtered, container, t) {
     const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const monthNamesFull = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-    // Group by year then month
-    const yearGroups = {};
+    // Group by year-month key
+    const groups = {};
     filtered.forEach(leak => {
         const d = leak.date || '';
         const parts = d.split('-');
         const year = parts[0] || 'Unknown';
-        const month = parts[1] || '';
-        const monthKey = month || '?';
-        if (!yearGroups[year]) yearGroups[year] = {};
-        if (!yearGroups[year][monthKey]) yearGroups[year][monthKey] = [];
-        yearGroups[year][monthKey].push(leak);
+        const month = parts[1] ? parts[1].padStart(2, '0') : '00';
+        const key = `${year}-${month}`;
+        if (!groups[key]) groups[key] = { year, month, leaks: [] };
+        groups[key].leaks.push(leak);
     });
 
-    const sortedYears = Object.keys(yearGroups).sort((a, b) => b.localeCompare(a));
-    const allMonthCounts = sortedYears.flatMap(y =>
-        Object.values(yearGroups[y]).map(arr => arr.length)
-    );
-    const maxCount = allMonthCounts.length ? Math.max(...allMonthCounts) : 1;
+    // Sort newest first (left-to-right: newest on left)
+    const sortedKeys = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+    if (!sortedKeys.length) { container.innerHTML = '<div class="no-leaks">No data</div>'; return; }
 
-    let html = '<div class="timeline-view">';
-    sortedYears.forEach(year => {
-        const months = yearGroups[year];
-        const sortedMonths = Object.keys(months).sort((a, b) => b.localeCompare(a));
-        html += `<div class="timeline-year-group">
-            <div class="timeline-year-header">${year}</div>`;
-        sortedMonths.forEach(mKey => {
-            const arr = months[mKey];
-            const pct = (arr.length / maxCount) * 100;
-            const mLabel = mKey !== '?' ? (monthNames[parseInt(mKey, 10) - 1] || mKey) : '?';
-            html += `<div class="timeline-month-row">
-                <div class="timeline-month-label">${mLabel}</div>
-                <div class="timeline-month-bar-track">
-                    <div class="timeline-month-bar" style="width:${pct}%"></div>
+    const maxCount = Math.max(...sortedKeys.map(k => groups[k].leaks.length));
+    const BAR_MAX_PX = 110; // max bar height in pixels
+
+    // Build columns HTML
+    const cols = sortedKeys.map((key, idx) => {
+        const g = groups[key];
+        const mIdx = parseInt(g.month, 10) - 1;
+        const mShort = g.month === '00' ? '?' : (monthNames[mIdx] || g.month).toUpperCase();
+        const mFull  = g.month === '00' ? 'Unknown' : (monthNamesFull[mIdx] || g.month);
+        const barH = maxCount ? Math.max(6, Math.round((g.leaks.length / maxCount) * BAR_MAX_PX)) : 6;
+        const isBig = g.leaks.length === maxCount;
+
+        const leaksHtml = g.leaks.map(l => `
+            <div class="htl-leak-item">
+                <span class="htl-leak-dot sector-${l.sector}"></span>
+                <span class="htl-leak-name" title="${l.name}">${l.name}</span>
+            </div>`).join('');
+
+        return `
+        <div class="htl-col${isBig ? ' htl-col--peak' : ''}" data-key="${key}">
+            <div class="htl-upper">
+                <div class="htl-month-label"><span class="htl-mon">${mShort}</span><span class="htl-yr">${g.year}</span></div>
+                <div class="htl-count-badge">${g.leaks.length}</div>
+                <div class="htl-bar-wrap">
+                    <div class="htl-bar" style="height:${barH}px" data-count="${g.leaks.length}"></div>
                 </div>
-                <div class="timeline-month-count">${arr.length}</div>
-                <div class="timeline-month-leaks">
-                    ${arr.map(l => `<div class="timeline-leak-item">
-                        <span class="timeline-leak-name">${l.name}</span>
-                        <span class="sector-badge ${l.sector}" style="font-size:0.65em;padding:2px 6px;">${t[l.sector]}</span>
-                    </div>`).join('')}
-                </div>
-            </div>`;
-        });
-        html += '</div>';
-    });
-    html += '</div>';
-    container.innerHTML = html;
+            </div>
+            <div class="htl-node-row">
+                <div class="htl-connector htl-connector--left"></div>
+                <div class="htl-dot" title="${mFull} ${g.year} · ${g.leaks.length} breach${g.leaks.length !== 1 ? 'es' : ''}"></div>
+                <div class="htl-connector htl-connector--right"></div>
+            </div>
+            <div class="htl-lower">
+                <div class="htl-leaks-list">${leaksHtml}</div>
+            </div>
+        </div>`;
+    }).join('');
+
+    container.innerHTML = `
+        <div class="htl-wrapper">
+            <div class="htl-scroll-area">
+                <div class="htl-cols">${cols}</div>
+            </div>
+            <div class="htl-scroll-hint" aria-hidden="true">
+                <span>← scroll</span>
+            </div>
+        </div>`;
 }
 
 function getLastUpdated() {
@@ -709,6 +759,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Apply URL params before first render
     readURLParams();
+    restoreSections();
 
     // Last updated timestamp
     const lastDate = getLastUpdated();

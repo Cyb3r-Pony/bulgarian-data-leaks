@@ -93,11 +93,14 @@
         </div>
 
         <!-- Sector analysis chart -->
-        <div class="stats-section">
+        <div class="stats-section" id="sectionSector">
             <div class="stats-header">
                 <div class="stats-eyebrow" id="statsEyebrow">// SECTOR ANALYSIS</div>
                 <h2 class="stats-title" id="statsTitle">Data Leaks by Economic Sector</h2>
                 <div class="stats-subtitle" id="statsSubtitle">Distribution of tracked breaches across industries</div>
+                <button class="stats-toggle" onclick="toggleSection('sector')" title="Collapse section" aria-expanded="true">
+                    <span class="stats-toggle-icon">▼</span>
+                </button>
             </div>
             <div class="chart-container">
                 <div class="chart-scanline" aria-hidden="true"></div>
@@ -107,11 +110,14 @@
         </div>
 
         <!-- Breach timeline chart -->
-        <div class="stats-section">
+        <div class="stats-section" id="sectionTimeline">
             <div class="stats-header">
                 <div class="stats-eyebrow" id="timelineEyebrow">// BREACH TIMELINE</div>
                 <h2 class="stats-title" id="timelineTitle">Leaks per Month</h2>
                 <div class="stats-subtitle" id="timelineSubtitle">Monthly breach frequency over time</div>
+                <button class="stats-toggle" onclick="toggleSection('timeline')" title="Collapse section" aria-expanded="true">
+                    <span class="stats-toggle-icon">▼</span>
+                </button>
             </div>
             <div class="chart-container">
                 <div class="chart-scanline" aria-hidden="true"></div>
