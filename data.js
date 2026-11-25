@@ -1953,6 +1953,16 @@ const leaks = [
         date: "2026-10-25",
         sourceUrl: "https://socradar.io/free-tools/ransomware-intelligence/victims/toplivo-ad-n0n-a147dbd8",
         evidenceImages: ["images/toplivo.bg-1.png", "images/toplivo.bg-2.png", "images/toplivo.bg-3.png"]
+    },
+    {
+        name: "System Soft - 65GB",
+        domain: "systemsoft.info",
+        sector: "private",
+        economicSector: "IT & Telecom",
+        threatActor: "Vexy Ransomware",
+        date: "2026-10-31",
+        sourceUrl: "http://vexytsr3chimdz6siwaqi2lvxxwfkxvffkpwyanr2llequ2hkm56jvqd.onion/blog",
+        evidenceImages: ["images/systemsoft-bg.png"]
     }
 
 ];
