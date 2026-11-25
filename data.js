@@ -1873,6 +1873,86 @@ const leaks = [
         date: "2026-04-28",
         sourceUrl: "https://pwnforums.st/Thread-SELLING-Generali-Insurance-Bulgaria-1-2M-Records?highlight=bulgaria",
         evidenceImages: ["images/generali.bg.png"]
+    },
+    {
+        name: "Apteki Mareshki",
+        domain: "mareshki.com",
+        sector: "private",
+        economicSector: "Healthcare & Pharma",
+        threatActor: "Unknown",
+        date: "2026-09-15",
+        sourceUrl: "https://x.com/",
+        evidenceImages: ["images/mareshki.com.jpeg"]
+    },
+    {
+        name: "Fitness1.bg [214,064 records]",
+        domain: "fitness1.bg",
+        sector: "private",
+        economicSector: "Commerce",
+        threatActor: "TrojaSec",
+        date: "2026-10-15",
+        sourceUrl: "https://bf.st/",
+        evidenceImages: ["images/fitness1.bg.png"]
+    },
+    {
+        name: "Testoup / Testograph (tglabs.eu) [45,965 records]",
+        domain: "tglabs.eu",
+        sector: "private",
+        economicSector: "IT & Telecom",
+        threatActor: "TrojaSec",
+        date: "2026-10-15",
+        sourceUrl: "https://bf.st/",
+        evidenceImages: ["images/tglabs.eu.png"]
+    },
+    {
+        name: "Priem Plovdiv [43,003 records]",
+        domain: "priem.plovdiv.bg",
+        sector: "public",
+        economicSector: "Public administration",
+        threatActor: "TrojaSec",
+        date: "2026-10-15",
+        sourceUrl: "https://bf.st/",
+        evidenceImages: ["images/priem.plovdiv.bg.png"]
+    },
+    {
+        name: "Econt.bg [3,196,563 orders]",
+        domain: "econt.bg",
+        sector: "private",
+        economicSector: "Supply Chain",
+        threatActor: "TrojaSec",
+        date: "2026-10-17",
+        sourceUrl: "https://bf.st/",
+        evidenceImages: ["images/econt.bg-trojasec.png"]
+    },
+    {
+        name: "Plesio.bg [207,903 records]",
+        domain: "plesio.bg",
+        sector: "private",
+        economicSector: "Commerce",
+        threatActor: "TrojaSec",
+        date: "2026-10-19",
+        sourceUrl: "https://bf.st/",
+        evidenceImages: ["images/plesio.bg.png"]
+    },
+    {
+        name: "KindyRoo.bg",
+        domain: "kindyroo.bg",
+        sector: "private",
+        economicSector: "General Services",
+        threatActor: "ZentinelTeam (via Keishell) [Forum member]",
+        date: "2026-11",
+        sourceUrl: "https://x.com/",
+        evidenceImages: ["images/kindyroo.bg.png"]
+    },
+    {
+        name: "Toplivo AD",
+        domain: "toplivo.bg",
+        sector: "private",
+        economicSector: "Energy",
+        threatActor: "n0n",
+        date: "2026-10-25",
+        sourceUrl: "https://socradar.io/free-tools/ransomware-intelligence/victims/toplivo-ad-n0n-a147dbd8",
+        evidenceImages: ["images/toplivo.bg-1.png", "images/toplivo.bg-2.png", "images/toplivo.bg-3.png"]
     }
 
 ];
