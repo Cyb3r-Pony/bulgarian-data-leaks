@@ -3,15 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BG Data Leaks Database</title>
+    <title>BG Data Leaks — Bulgarian Data Breach Database</title>
+    <meta name="description" content="Tracking security breaches exposing personally identifiable information of Bulgarian citizens. Database of data leaks, ransomware attacks, and cybersecurity incidents in Bulgaria.">
+    <meta name="keywords" content="Bulgaria, data breach, data leak, cybersecurity, ransomware, PII, GDPR, изтичане на данни, кибер сигурност">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bgdataleaks.xyz">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BG Data Leaks — Bulgarian Data Breach Database">
+    <meta property="og:description" content="Tracking security breaches exposing PII of Bulgarian citizens and confidential data of organizations. Ransomware victims, hacked databases, and leaked records.">
+    <meta property="og:url" content="https://bgdataleaks.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://bgdataleaks.xyz/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BG Data Leaks">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BG Data Leaks — Bulgarian Data Breach Database">
+    <meta name="twitter:description" content="Tracking security breaches exposing PII of Bulgarian citizens. Ransomware victims, hacked databases, leaked records.">
+    <meta name="twitter:image" content="https://bgdataleaks.xyz/og-image.png">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="mask-icon" href="favicon.svg" color="#ff2b3d">
     <meta name="theme-color" content="#0b0e13">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="lang-switch">
-        <button class="btn" onclick="toggleLanguage()">
+    <!-- Top-right controls: theme toggle + language -->
+    <div class="top-controls">
+        <button id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button>
+        <button class="btn lang-btn" onclick="toggleLanguage()">
             <span id="langBtn">БГ</span>
         </button>
     </div>
@@ -26,6 +50,7 @@
                 <span id="headerStatus">LIVE MONITORING</span>
             </div>
             <div class="description" id="description">Tracking security breaches exposing personally identifiable information of Bulgarian citizens and confidential internal documents of organizations</div>
+            <div class="last-updated" id="lastUpdated"></div>
             <div class="powered-by" id="poweredBy">Powered by Claude Sonnet 4.5 by Anthropic</div>
         </header>
 
@@ -67,6 +92,7 @@
             </div>
         </div>
 
+        <!-- Sector analysis chart -->
         <div class="stats-section">
             <div class="stats-header">
                 <div class="stats-eyebrow" id="statsEyebrow">// SECTOR ANALYSIS</div>
@@ -80,16 +106,35 @@
             <div class="chart-legend" id="chartLegend"></div>
         </div>
 
+        <!-- Breach timeline chart -->
+        <div class="stats-section">
+            <div class="stats-header">
+                <div class="stats-eyebrow" id="timelineEyebrow">// BREACH TIMELINE</div>
+                <h2 class="stats-title" id="timelineTitle">Leaks per Month</h2>
+                <div class="stats-subtitle" id="timelineSubtitle">Monthly breach frequency over time</div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-scanline" aria-hidden="true"></div>
+                <div id="breachTimelineChart" class="sector-bars" role="img" aria-label="Bar chart of data leaks by month"></div>
+            </div>
+        </div>
+
         <div class="controls">
-            <button class="btn active" onclick="filterLeaks('all')">
-                <span id="btnAll">All Leaks</span>
-            </button>
-            <button class="btn" onclick="filterLeaks('public')">
-                <span id="btnPublic">Public Sector</span>
-            </button>
-            <button class="btn" onclick="filterLeaks('private')">
-                <span id="btnPrivate">Private Sector</span>
-            </button>
+            <div class="filter-group">
+                <button class="btn active" onclick="filterLeaks('all')">
+                    <span id="btnAll">All Leaks</span>
+                </button>
+                <button class="btn" onclick="filterLeaks('public')">
+                    <span id="btnPublic">Public Sector</span>
+                </button>
+                <button class="btn" onclick="filterLeaks('private')">
+                    <span id="btnPrivate">Private Sector</span>
+                </button>
+            </div>
+            <div class="view-group">
+                <button class="btn view-btn active" id="viewGrid" onclick="toggleView('grid')" title="Grid view">▦ <span id="btnGrid">Grid</span></button>
+                <button class="btn view-btn" id="viewTimeline" onclick="toggleView('timeline')" title="Timeline view">◈ <span id="btnTimeline">Timeline</span></button>
+            </div>
         </div>
 
         <div class="search-section">
@@ -111,6 +156,7 @@
         </div>
 
         <div class="leak-grid" id="leaksContainer"></div>
+        <div id="paginationContainer"></div>
 
         <div class="disclaimer">
             <div class="disclaimer-title" id="disclaimerTitle">Legal Disclaimer</div>
@@ -128,7 +174,6 @@
         </div>
     </div>
 
-    <button id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button>
     <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
 
     <script src="data.js"></script>

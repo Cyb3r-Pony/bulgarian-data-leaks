@@ -1,6 +1,9 @@
 let currentLang = 'en';
 let currentFilter = 'all';
 let searchQuery = '';
+let currentPage = 1;
+const ITEMS_PER_PAGE = 20;
+let currentView = 'grid'; // 'grid' | 'timeline'
 
 function toggleTheme() {
     const isLight = document.body.classList.toggle('light');
@@ -51,7 +54,15 @@ const translations = {
         searchTitle: 'Search for Company',
         searchPlaceholder: 'Enter company name or domain...',
         searchResults: 'results found',
-        noResults: 'No companies found matching your search'
+        noResults: 'No companies found matching your search',
+        btnGrid: 'Grid',
+        btnTimeline: 'Timeline',
+        lastUpdated: 'Last updated',
+        prevPage: '← Prev',
+        nextPage: 'Next →',
+        timelineEyebrow: '// BREACH TIMELINE',
+        timelineTitle: 'Leaks per Month',
+        timelineSubtitle: 'Monthly breach frequency over time'
     },
     bg: {
         mainTitle: 'ИЗТИЧАНЕ НА ДАННИ В БЪЛГАРИЯ',
@@ -85,7 +96,15 @@ const translations = {
         searchTitle: 'Търсене на Компания',
         searchPlaceholder: 'Въведете име или домейн...',
         searchResults: 'намерени резултата',
-        noResults: 'Няма намерени компании'
+        noResults: 'Няма намерени компании',
+        btnGrid: 'Решетка',
+        btnTimeline: 'Времева линия',
+        lastUpdated: 'Последна актуализация',
+        prevPage: '← Предишна',
+        nextPage: 'Следваща →',
+        timelineEyebrow: '// ВРЕМЕВА ЛИНИЯ',
+        timelineTitle: 'Изтичания по Месец',
+        timelineSubtitle: 'Месечна честота на пробивите'
     }
 };
 
@@ -197,6 +216,16 @@ function updateTranslations() {
     document.getElementById('privateLabel').textContent = t.privateLabel;
     document.getElementById('searchTitle').textContent = t.searchTitle;
     document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+    const btnGridEl = document.getElementById('btnGrid');
+    if (btnGridEl) btnGridEl.textContent = t.btnGrid || 'Grid';
+    const btnTimelineEl = document.getElementById('btnTimeline');
+    if (btnTimelineEl) btnTimelineEl.textContent = t.btnTimeline || 'Timeline';
+    const timelineEyebrowEl = document.getElementById('timelineEyebrow');
+    if (timelineEyebrowEl) timelineEyebrowEl.textContent = t.timelineEyebrow || '// BREACH TIMELINE';
+    const timelineTitleEl = document.getElementById('timelineTitle');
+    if (timelineTitleEl) timelineTitleEl.textContent = t.timelineTitle || 'Leaks per Month';
+    const timelineSubtitleEl = document.getElementById('timelineSubtitle');
+    if (timelineSubtitleEl) timelineSubtitleEl.textContent = t.timelineSubtitle || 'Monthly breach frequency over time';
     renderLeaks();
     renderChart();
 }
@@ -227,38 +256,75 @@ function updateCounters() {
 
 function handleSearch() {
     searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    currentPage = 1;
     renderLeaks();
 }
 
 function filterLeaks(filter) {
     currentFilter = filter;
-    const buttons = document.querySelectorAll('.controls .btn');
+    const buttons = document.querySelectorAll('.filter-group .btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     event.target.closest('.btn').classList.add('active');
+    currentPage = 1;
     renderLeaks();
 }
 
-function renderLeaks() {
-    const t = translations[currentLang];
-    const container = document.getElementById('leaksContainer');
-    
-    // Filter based on current filter
-    let filtered;
-    if (currentFilter === 'all') {
-        filtered = [...leaks];
-    } else {
-        filtered = leaks.filter(l => l.sector === currentFilter);
-    }
+function toggleView(view) {
+    currentView = view;
+    currentPage = 1;
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+    const target = document.getElementById(view === 'grid' ? 'viewGrid' : 'viewTimeline');
+    if (target) target.classList.add('active');
+    renderLeaks();
+}
 
-    // Apply search filter
+function buildLeakCard(leak, t) {
+    const hasValidEvidence = leak.evidenceImages &&
+        Array.isArray(leak.evidenceImages) && leak.evidenceImages.length > 0;
+    const evidenceHTML = hasValidEvidence ? leak.evidenceImages.map(imgPath => `
+        <img src="${imgPath}" alt="Evidence" style="width:100%;height:auto;border:1px solid rgba(120,130,145,0.3);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.45);">
+    `).join('') : '';
+    return `
+        <div class="leak-card">
+            <div class="leak-header">
+                <div>
+                    <div class="leak-title">${leak.name}</div>
+                    ${leak.domain ? `<div class="leak-domain">${leak.domain}</div>` : ''}
+                </div>
+                <div>
+                    <div class="sector-badge ${leak.sector}">${t[leak.sector]}</div>
+                    <div class="economic-sector">${leak.economicSector}</div>
+                </div>
+            </div>
+            <div class="leak-info">
+                <div class="info-row">
+                    <span class="info-label">${t.threatActor}:</span>
+                    <span class="info-value threat-actor">${leak.threatActor}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">${t.date}:</span>
+                    <span class="info-value">${formatDate(leak.date)}</span>
+                </div>
+            </div>
+            ${hasValidEvidence ? `
+            <div class="evidence-section">
+                <div class="evidence-title">${t.evidence}</div>
+                <div class="evidence-images">${evidenceHTML}</div>
+            </div>` : ''}
+            <a href="${leak.sourceUrl}" target="_blank" class="source-link">${t.viewSource} →</a>
+        </div>
+    `;
+}
+
+function getFilteredSorted() {
+    let filtered = currentFilter === 'all' ? [...leaks] : leaks.filter(l => l.sector === currentFilter);
     if (searchQuery) {
-        filtered = filtered.filter(leak =>
-            leak.name.toLowerCase().includes(searchQuery) ||
-            leak.domain.toLowerCase().includes(searchQuery)
+        filtered = filtered.filter(l =>
+            l.name.toLowerCase().includes(searchQuery) ||
+            (l.domain || '').toLowerCase().includes(searchQuery) ||
+            (l.threatActor || '').toLowerCase().includes(searchQuery)
         );
     }
-
-    // Sort by date descending (newest first); entries without valid dates go to the bottom
     filtered.sort((a, b) => {
         const hasA = a.date && a.date !== 'Unknown' && a.date.trim() !== '';
         const hasB = b.date && b.date !== 'Unknown' && b.date.trim() !== '';
@@ -267,6 +333,13 @@ function renderLeaks() {
         if (!hasB) return -1;
         return new Date(b.date) - new Date(a.date);
     });
+    return filtered;
+}
+
+function renderLeaks() {
+    const t = translations[currentLang];
+    const container = document.getElementById('leaksContainer');
+    const filtered = getFilteredSorted();
 
     // Update search results count
     const resultsElement = document.getElementById('searchResults');
@@ -278,63 +351,205 @@ function renderLeaks() {
 
     if (filtered.length === 0) {
         container.innerHTML = `<div class="no-leaks">${searchQuery ? t.noResults : t.noLeaks}</div>`;
+        document.getElementById('paginationContainer').innerHTML = '';
         return;
     }
 
-    container.innerHTML = filtered.map(leak => {
-        // Generate evidence images HTML only if valid images exist
-        let evidenceHTML = '';
-        const hasValidEvidence = leak.evidenceImages && 
-                                Array.isArray(leak.evidenceImages) && 
-                                leak.evidenceImages.length > 0;
-        
-        if (hasValidEvidence) {
-            // Show actual images from evidenceImages array
-            evidenceHTML = leak.evidenceImages.map(imgPath => `
-                <img src="${imgPath}" alt="Evidence" style="width: 100%; height: auto; border: 1px solid rgba(120, 130, 145, 0.3); border-radius: 6px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);">
-            `).join('');
+    if (currentView === 'timeline') {
+        renderTimelineView(filtered, container, t);
+        document.getElementById('paginationContainer').innerHTML = '';
+        updateURL();
+        return;
+    }
+
+    // Grid view with pagination
+    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+    if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const pageLeaks = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+    container.innerHTML = pageLeaks.map(leak => buildLeakCard(leak, t)).join('');
+    setupEvidenceClickHandlers();
+    renderPagination(totalPages);
+    updateURL();
+}
+
+function renderPagination(totalPages) {
+    const container = document.getElementById('paginationContainer');
+    if (!container) return;
+    if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+    const t = translations[currentLang];
+    let html = '<div class="pagination">';
+    html += `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>${t.prevPage || '← Prev'}</button>`;
+
+    const range = [];
+    for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+        range.push(i);
+    }
+    if (range[0] > 1) {
+        html += `<button class="page-btn" onclick="goToPage(1)">1</button>`;
+        if (range[0] > 2) html += `<span class="page-ellipsis">…</span>`;
+    }
+    range.forEach(i => {
+        html += `<button class="page-btn${i === currentPage ? ' active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+    });
+    if (range[range.length - 1] < totalPages) {
+        if (range[range.length - 1] < totalPages - 1) html += `<span class="page-ellipsis">…</span>`;
+        html += `<button class="page-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+    }
+    html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>${t.nextPage || 'Next →'}</button>`;
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+function goToPage(page) {
+    if (page < 1) return;
+    currentPage = page;
+    renderLeaks();
+    const leakTop = document.getElementById('leaksContainer').offsetTop;
+    window.scrollTo({ top: leakTop - 100, behavior: 'smooth' });
+}
+
+function renderTimelineView(filtered, container, t) {
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    // Group by year then month
+    const yearGroups = {};
+    filtered.forEach(leak => {
+        const d = leak.date || '';
+        const parts = d.split('-');
+        const year = parts[0] || 'Unknown';
+        const month = parts[1] || '';
+        const monthKey = month || '?';
+        if (!yearGroups[year]) yearGroups[year] = {};
+        if (!yearGroups[year][monthKey]) yearGroups[year][monthKey] = [];
+        yearGroups[year][monthKey].push(leak);
+    });
+
+    const sortedYears = Object.keys(yearGroups).sort((a, b) => b.localeCompare(a));
+    const allMonthCounts = sortedYears.flatMap(y =>
+        Object.values(yearGroups[y]).map(arr => arr.length)
+    );
+    const maxCount = allMonthCounts.length ? Math.max(...allMonthCounts) : 1;
+
+    let html = '<div class="timeline-view">';
+    sortedYears.forEach(year => {
+        const months = yearGroups[year];
+        const sortedMonths = Object.keys(months).sort((a, b) => b.localeCompare(a));
+        html += `<div class="timeline-year-group">
+            <div class="timeline-year-header">${year}</div>`;
+        sortedMonths.forEach(mKey => {
+            const arr = months[mKey];
+            const pct = (arr.length / maxCount) * 100;
+            const mLabel = mKey !== '?' ? (monthNames[parseInt(mKey, 10) - 1] || mKey) : '?';
+            html += `<div class="timeline-month-row">
+                <div class="timeline-month-label">${mLabel}</div>
+                <div class="timeline-month-bar-track">
+                    <div class="timeline-month-bar" style="width:${pct}%"></div>
+                </div>
+                <div class="timeline-month-count">${arr.length}</div>
+                <div class="timeline-month-leaks">
+                    ${arr.map(l => `<div class="timeline-leak-item">
+                        <span class="timeline-leak-name">${l.name}</span>
+                        <span class="sector-badge ${l.sector}" style="font-size:0.65em;padding:2px 6px;">${t[l.sector]}</span>
+                    </div>`).join('')}
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+function getLastUpdated() {
+    const dates = leaks
+        .filter(l => l.date && l.date !== 'Unknown' && l.date.trim() !== '' && /^\d{4}/.test(l.date))
+        .map(l => l.date);
+    if (!dates.length) return null;
+    dates.sort();
+    return dates[dates.length - 1];
+}
+
+function updateURL() {
+    const params = new URLSearchParams();
+    if (currentFilter !== 'all') params.set('filter', currentFilter);
+    if (searchQuery) params.set('search', searchQuery);
+    if (currentPage > 1) params.set('page', String(currentPage));
+    if (currentView !== 'grid') params.set('view', currentView);
+    const qs = params.toString();
+    try {
+        history.replaceState({}, '', qs ? '?' + qs : window.location.pathname);
+    } catch(e) {}
+}
+
+function readURLParams() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('filter') && ['all','public','private'].includes(params.get('filter'))) {
+            currentFilter = params.get('filter');
+            // Update active filter button
+            document.querySelectorAll('.filter-group .btn').forEach(btn => btn.classList.remove('active'));
+            const ids = { all: 'btnAll', public: 'btnPublic', private: 'btnPrivate' };
+            const el = document.getElementById(ids[currentFilter]);
+            if (el) el.closest('.btn').classList.add('active');
         }
-        
+        if (params.get('search')) {
+            searchQuery = params.get('search');
+            const inp = document.getElementById('searchInput');
+            if (inp) inp.value = searchQuery;
+        }
+        if (params.get('page')) {
+            currentPage = Math.max(1, parseInt(params.get('page')) || 1);
+        }
+        if (params.get('view') === 'timeline') {
+            currentView = 'timeline';
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            const tBtn = document.getElementById('viewTimeline');
+            if (tBtn) tBtn.classList.add('active');
+            const gBtn = document.getElementById('viewGrid');
+            if (gBtn) gBtn.classList.remove('active');
+        }
+    } catch(e) {}
+}
+
+function renderBreachTimeline() {
+    const chart = document.getElementById('breachTimelineChart');
+    if (!chart) return;
+
+    const counts = {};
+    leaks.forEach(l => {
+        if (!l.date || l.date === 'Unknown') return;
+        const parts = l.date.split('-');
+        if (parts.length < 2) return;
+        const key = `${parts[0]}-${parts[1].padStart(2, '0')}`;
+        counts[key] = (counts[key] || 0) + 1;
+    });
+
+    const sorted = Object.keys(counts).sort().slice(-24);
+    if (!sorted.length) { chart.innerHTML = ''; return; }
+
+    const maxCount = Math.max(...sorted.map(k => counts[k]));
+    const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    chart.innerHTML = sorted.map((key, i) => {
+        const [y, m] = key.split('-');
+        const label = `${monthNames[parseInt(m, 10) - 1] || m} ${y}`;
+        const count = counts[key];
+        const pct = maxCount ? (count / maxCount) * 100 : 0;
+        const delay = Math.min(i * 40, 700);
+        const tier = pct > 60 ? 'high' : pct > 30 ? 'medium' : 'low';
         return `
-            <div class="leak-card">
-                <div class="leak-header">
-                    <div>
-                        <div class="leak-title">${leak.name}</div>
-                        ${leak.domain ? `<div class="leak-domain">${leak.domain}</div>` : ''}
+            <div class="sector-bar" style="--bar-delay:${delay}ms">
+                <div class="sector-bar-label" title="${label}">${label}</div>
+                <div class="sector-bar-track">
+                    <div class="sector-bar-fill ${tier}" style="width:${pct}%">
+                        <span class="sector-bar-tip"></span>
                     </div>
-                    <div>
-                        <div class="sector-badge ${leak.sector}">
-                            ${t[leak.sector]}
-                        </div>
-                        <div class="economic-sector">${leak.economicSector}</div>
-                    </div>
+                    <span class="sector-bar-count">${count}</span>
                 </div>
-                
-                <div class="leak-info">
-                    <div class="info-row">
-                        <span class="info-label">${t.threatActor}:</span>
-                        <span class="info-value threat-actor">${leak.threatActor}</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">${t.date}:</span>
-                        <span class="info-value">${formatDate(leak.date)}</span>
-                    </div>
-                </div>
-
-                ${hasValidEvidence ? `
-                <div class="evidence-section">
-                    <div class="evidence-title">${t.evidence}</div>
-                    <div class="evidence-images">
-                        ${evidenceHTML}
-                    </div>
-                </div>
-                ` : ''}
-
-                <a href="${leak.sourceUrl}" target="_blank" class="source-link">
-                    ${t.viewSource} →
-                </a>
-            </div>
-        `;
+            </div>`;
     }).join('');
 }
 
@@ -480,14 +695,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Override renderLeaks to add click handlers after rendering
-const originalRenderLeaks = renderLeaks;
-renderLeaks = function() {
-    originalRenderLeaks();
-    // Setup click handlers after a brief delay to ensure DOM is updated
-    setTimeout(setupEvidenceClickHandlers, 50);
-};
-
 // Initialize the page when DOM is ready
 // Data is already loaded from data.js
 document.addEventListener('DOMContentLoaded', function() {
@@ -500,9 +707,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     } catch(e) {}
 
+    // Apply URL params before first render
+    readURLParams();
+
+    // Last updated timestamp
+    const lastDate = getLastUpdated();
+    if (lastDate) {
+        const t = translations[currentLang];
+        const luEl = document.getElementById('lastUpdated');
+        if (luEl) luEl.textContent = `${t.lastUpdated || 'Last updated'}: ${formatDate(lastDate)}`;
+    }
+
     updateCounters();
     renderLeaks();
     renderChart();
+    renderBreachTimeline();
 
     // Back to top button visibility
     const backToTop = document.getElementById('backToTop');
