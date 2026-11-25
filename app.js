@@ -2,6 +2,13 @@ let currentLang = 'en';
 let currentFilter = 'all';
 let searchQuery = '';
 
+function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    document.getElementById('themeToggle').textContent = isLight ? '☽' : '☀';
+    document.documentElement.style.setProperty('--sb-track', isLight ? '#d0d6e4' : '#0d0f14');
+    try { localStorage.setItem('bgdl-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+}
+
 // Format date from YYYY-MM-DD / YYYY-MM / YYYY to DD/MM/YYYY
 function formatDate(dateStr) {
     if (!dateStr || dateStr === 'Unknown') return dateStr;
@@ -484,6 +491,15 @@ renderLeaks = function() {
 // Initialize the page when DOM is ready
 // Data is already loaded from data.js
 document.addEventListener('DOMContentLoaded', function() {
+    // Restore saved theme
+    try {
+        if (localStorage.getItem('bgdl-theme') === 'light') {
+            document.body.classList.add('light');
+            document.getElementById('themeToggle').textContent = '☽';
+            document.documentElement.style.setProperty('--sb-track', '#d0d6e4');
+        }
+    } catch(e) {}
+
     updateCounters();
     renderLeaks();
     renderChart();
